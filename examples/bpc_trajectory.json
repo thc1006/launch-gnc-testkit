@@ -1,0 +1,14 @@
+[
+  {
+    "time": 0.0,
+    "rocket_states": [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN],
+    "balloon_states": [[0.0, 0.0, 10.0, 0.0, 0.0, 0.0]],
+    "balloon_status": [1]
+  },
+  {
+    "time": 0.1,
+    "rocket_states": [0.0, 0.0, 100.0, 0.0, 0.0, 10.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+    "balloon_states": [[0.0, 0.0, 10.0, 0.0, 0.0, 0.0]],
+    "balloon_status": [1]
+  }
+]

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use Launch GNC Testkit in research, cite this software and the source simulator where applicable."
+title: "Launch GNC Testkit"
+type: software
+version: 0.1.0
+date-released: 2026-07-30
+license: MIT
+authors:
+  - name: "Launch GNC Testkit contributors"
+abstract: >-
+  Simulator-independent provenance, trace validation, deterministic seed
+  derivation, and numerical regression tooling extracted from engineering
+  patterns in the ARRC Balloon Popping Challenge.

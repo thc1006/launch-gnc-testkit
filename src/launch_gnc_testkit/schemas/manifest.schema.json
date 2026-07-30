@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:launch-gnc-testkit:manifest:0.1.0",
+  "title": "Launch GNC Testkit Run Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run",
+    "scenario",
+    "coordinates",
+    "units",
+    "random",
+    "simulator",
+    "controller",
+    "trace"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1.0"
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{24}$"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "scenario": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "version",
+        "time_step_s"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "time_step_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "duration_s": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "world_frame",
+        "body_frame",
+        "vertical_reference",
+        "quaternion_order"
+      ],
+      "properties": {
+        "world_frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "body_frame": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vertical_reference": {
+          "enum": [
+            "MSL",
+            "AGL",
+            "ELLIPSOID",
+            "CUSTOM"
+          ]
+        },
+        "quaternion_order": {
+          "enum": [
+            "wxyz",
+            "xyzw"
+          ]
+        }
+      }
+    },
+    "units": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "time",
+        "length",
+        "angle",
+        "angular_rate",
+        "velocity"
+      ],
+      "properties": {
+        "time": {
+          "const": "s"
+        },
+        "length": {
+          "const": "m"
+        },
+        "angle": {
+          "const": "rad"
+        },
+        "angular_rate": {
+          "const": "rad/s"
+        },
+        "velocity": {
+          "const": "m/s"
+        }
+      }
+    },
+    "random": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "root_seed",
+        "derivation"
+      ],
+      "properties": {
+        "root_seed": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "derivation": {
+          "type": "string"
+        }
+      }
+    },
+    "simulator": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "source_repository": {
+          "type": "string"
+        },
+        "source_commit": {
+          "type": "string"
+        },
+        "configuration_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "controller": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string"
+        },
+        "source_commit": {
+          "type": "string"
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "format",
+        "path"
+      ],
+      "properties": {
+        "format": {
+          "enum": [
+            "ndjson",
+            "jsonl",
+            "json",
+            "parquet"
+          ]
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

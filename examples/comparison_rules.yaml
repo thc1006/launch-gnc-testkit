@@ -1,0 +1,15 @@
+row_count_abs_tol: 0
+continuity_factor: 3.0
+rules:
+  - path: time_s
+    kind: scalar
+    abs_tol: 1.0e-12
+  - path: truth.position_m
+    kind: vector
+    abs_tol: 0.5
+  - path: truth.velocity_mps
+    kind: vector
+    abs_tol: 0.1
+  - path: truth.attitude_quaternion
+    kind: quaternion
+    abs_tol: 0.001
